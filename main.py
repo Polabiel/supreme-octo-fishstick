@@ -11,10 +11,9 @@ def nearest_neighbor(tour: list, ) -> list:
         
     return tour
 
-def multiplesTravelingSalesman(TravelsSalesmans: list[list], cities: int) -> int:
+def multiplesTravelingSalesman(TravelsSalesmans: list[list], cities: list[list[int]]) -> int:
     if(len(TravelsSalesmans) < 2):
-        raise Exception("you do not have more than 2 traveling salesmen to perform this function")
-    
+        raise Exception("you do not have more than 2 traveling salesmen to perform this function")    
 
 def benchmark(tour: list, numberCities: int) -> int:
     total_distance = 0
