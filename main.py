@@ -13,7 +13,14 @@ def nearest_neighbor(distances: list[list[int]], tour: list[int] = None, unvisit
 
     # Tenta encontrar a próxima cidade
     try:
-        next_city = min(unvisited, key=lambda unvisited_city: distances[tour[-1]][unvisited_city])
+        next_city = unvisited[0]
+        min_distance = distances[tour[-1]][next_city]
+
+        for unvisited_city in unvisited[1:]:
+            distance = distances[tour[-1]][unvisited_city]
+            if distance < min_distance:
+                next_city = unvisited_city
+                min_distance = distance
     except ValueError as e:
         print(f"Erro ao encontrar a próxima cidade: {e}")
         return tour
@@ -28,7 +35,7 @@ def nearest_neighbor(distances: list[list[int]], tour: list[int] = None, unvisit
 def multiplesTravelingSalesman(TravelsSalesmans: list[list], cities: list[list[int]]) -> int:
     # Ainda não achei um jeito bonitão de fazer isso
     if(len(TravelsSalesmans) < 2):
-        raise ValueError("you do not have more than 2 traveling salesmen to perform this function")    
+        raise ValueError("you do not have more than 2 traveling salesmen to perform this function")
 
 def benchmark(tour: list, numberCities: int, distances: list[list[int]]) -> int:
     # Função para verificar se essa é realmente a melhor distance
@@ -43,7 +50,7 @@ def benchmark(tour: list, numberCities: int, distances: list[list[int]]) -> int:
 
 if __name__ == "__main__":
     m  = matriz(["São Paulo","Campinas","Sorocaba","Santos","Ribeirão Preto","Bauru","São José dos Campos","São José do Rio Preto","Piracicaba","Presidente Prudente","Araraquara","Maranhão"])
-    distances = m.generateRandomMatrix()
+    distances = m.generateMatrixAboutLen(5)
     m.toString()
     print("\nResult:\n")
     print(nearest_neighbor(distances))

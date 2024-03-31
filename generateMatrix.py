@@ -38,4 +38,4 @@ class matriz:
                 distance_matrix[j][i] = distance
 
         self.distanceMatrix = distance_matrix
-        return distanceMatrix
+        return distance_matrix
