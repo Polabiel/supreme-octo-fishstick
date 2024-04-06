@@ -1,13 +1,17 @@
 class TravelingSalesman:
-    def __init__(self, cities: list[list[int]]) -> None:
+    def __init__(self, cities: list[list[int]], numberTravelingSalesmans: int) -> None:
         if(len(cities) <= 0 or cities is None):
             raise ValueError("you need to include your cities within the parameter")
         
+        if numberTravelingSalesmans < 2:
+            raise ValueError("You need to implement a value for the number of traveling salesmen")
+        
         self.cities: list[list[int]] = cities
+        self.numberTravelingSalesmans: int = numberTravelingSalesmans
 
     def divide_cities(self) -> int:
         # Dividir as cidades e arrendodar para cima caso necessario, nao sei se isso funcionará ou vai dar erro
-        divCities: int = round(len(self.cities) / 2)
+        divCities: int = round(len(self.cities) / self.numberTravelingSalesmans)
 
         if divCities is None:
             return -1
@@ -49,4 +53,3 @@ class TravelingSalesman:
 
         # Chama a função de maneira recursiva e BONITA!!!!
         return self.nearest_neighbor(tour, unvisited)
-

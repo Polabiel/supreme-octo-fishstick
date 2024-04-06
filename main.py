@@ -15,8 +15,8 @@ def benchmark(tour: list, numberCities: int, distances: list[list[int]]) -> int:
 if __name__ == "__main__":
     m  = Matriz(["São Paulo","Campinas","Sorocaba","Santos","Ribeirão Preto","Bauru","São José dos Campos","São José do Rio Preto","Piracicaba","Presidente Prudente","Araraquara","Maranhão"])
     distances: list[list[int]] = m.generateRandomMatrix()
-    m.toString()
     print("\nResult:\n")
-    t = TravelingSalesman(distances)
+    print(m.toString())
+    t = TravelingSalesman(distances, 12)
     print(t.nearest_neighbor())
     print(f"Total distance calculation: {benchmark(t.nearest_neighbor(), len(t.cities),t.cities)}")
